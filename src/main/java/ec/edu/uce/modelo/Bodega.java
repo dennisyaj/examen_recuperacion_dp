@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author Laptop
@@ -38,8 +39,12 @@ public class Bodega {
 
 //	@Column(name = "bode_telefonos")
 	@ElementCollection
-	List<String> telefonos;
+	private List<String> telefonos;
 
+	@Transient
+	private String telefono;
+	
+	//gets and sets
 	@OneToMany(mappedBy = "bodega", cascade = CascadeType.ALL)
 	private List<Inventario> inventario;
 
@@ -90,6 +95,13 @@ public class Bodega {
 	public void setInventario(List<Inventario> inventario) {
 		this.inventario = inventario;
 	}
-	
-	
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 }

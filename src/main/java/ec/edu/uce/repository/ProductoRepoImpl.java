@@ -1,7 +1,10 @@
 package ec.edu.uce.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -11,7 +14,6 @@ import ec.edu.uce.modelo.Producto;
 @Transactional
 @Repository
 public class ProductoRepoImpl implements IProductoRepo {
-
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -38,6 +40,13 @@ public class ProductoRepoImpl implements IProductoRepo {
 	public Producto buscar(Integer id) {
 		return this.entityManager.find(Producto.class, id);
 	}
-	
+
+	@Override
+	public List<Producto> buscarTodos() {
+
+		TypedQuery<Producto> myQuery = this.entityManager.createQuery("SELECT p FROM Producto p ", Producto.class);
+
+		return myQuery.getResultList();
+	}
 
 }

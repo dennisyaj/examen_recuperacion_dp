@@ -1,6 +1,7 @@
 package ec.edu.uce.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -22,6 +23,13 @@ public class GestorTiendaServiceImpl implements IGestorTiendaService {
 	@Transactional
 	public void ingresarBodega(String nombre, String numero, String direccion, String telefono) {
 
+		String delimitante = ",";
+		String[] campo = telefono.split((delimitante));
+		
+		for (int i = 0; i < campo.length; i++) {
+			
+		}
+		System.out.println(campo[0]);
 		Bodega bodega = new Bodega();
 		bodega.setDireccion(direccion);
 		bodega.setNumero(numero);
@@ -43,7 +51,25 @@ public class GestorTiendaServiceImpl implements IGestorTiendaService {
 		producto.setStock(0);
 
 		this.iProductoService.insertar(producto);
-		
+
+	}
+
+	@Override
+	public List<Producto> listaProducto() {
+
+		return this.iProductoService.buscarTodos();
+	}
+
+	@Override
+	public boolean borrarProducto(Integer id) {
+
+		this.iProductoService.borrar(id);
+		return true;
+	}
+
+	@Override
+	public void inngresarProductoInventario(String numeroBodega, String codigoBarras, Integer cantidad) {
+
 	}
 
 }

@@ -13,9 +13,9 @@
 <body>
 <div th:text="${mensaje}" th:if="${mensaje!=null}"> </div>
 	<div class=container my-5>
-		<h3>Insertar Bodega</h3>
+		<h3>Insertar Producto</h3>
 		<div class="card-body">
-			<form th:action="@{/bodegueros/llenarDatos}" th:object="${bodega}" method="post">
+			<form th:action="@{/bodegueros/llenarDatosProducto}" th:object="${producto}" method="post">
 				<table>
 					<tr>
 						<td>
@@ -27,28 +27,21 @@
 					</tr>
 					<tr>
 						<td>
-							<label>Numero:</label>
+							<label class="col-form-label">Codigo de barras maestro:</label>
 						</td>
 						<td>
-							<input class="form-control" type="text" id="numero" th:field="*{numero}">
+							<input class="form-control" type="text" id="codigoBarras" th:field="*{codigoBarras}">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label class="col-form-label">Direccion:</label>
+							<label class="col-form-label">Categoria:</label>
 						</td>
 						<td>
-							<input class="form-control" type="text" id="direccion" th:field="*{direccion}">
+							<input class="form-control" type="text" id="categoria" th:field="*{categoria}">
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<label class="col-form-label">Telefonos:</label>
-						</td>
-						<td>
-							<input class="form-control" type="text" id="telefonos" th:field="*{telefono}">
-						</td>
-					</tr>
+
 				</table>
 				<input class="btn btn-outline-primary" type="submit" value="Guardar">
 			</form>

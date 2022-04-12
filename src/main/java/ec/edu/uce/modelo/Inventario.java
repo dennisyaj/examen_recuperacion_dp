@@ -46,4 +46,70 @@ public class Inventario {
 	@OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)
 	private List<Producto> productos;
 
+	//gets and sets
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNumeroBodega() {
+		return numeroBodega;
+	}
+
+	public void setNumeroBodega(String numeroBodega) {
+		this.numeroBodega = numeroBodega;
+	}
+
+	public String getCodigoBarrasUniversal() {
+		return codigoBarrasUniversal;
+	}
+
+	public void setCodigoBarrasUniversal(String codigoBarrasUniversal) {
+		this.codigoBarrasUniversal = codigoBarrasUniversal;
+	}
+
+	public String getCodigoBarrasIndividual() {
+		return codigoBarrasIndividual;
+	}
+
+	public void setCodigoBarrasIndividual(String codigoBarrasIndividual) {
+		this.codigoBarrasIndividual = codigoBarrasIndividual;
+	}
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public String getNombreHilo() {
+		return nombreHilo;
+	}
+
+	public void setNombreHilo(String nombreHilo) {
+		this.nombreHilo = nombreHilo;
+	}
+
+	public Bodega getBodega() {
+		return bodega;
+	}
+
+	public void setBodega(Bodega bodega) {
+		this.bodega = bodega;
+	}
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+
+	
 }

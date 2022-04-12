@@ -39,7 +39,7 @@ public class Producto {
 	@ManyToOne()
 	@JoinColumn(name = "inve_id")
 	private Inventario inventario;
-
+	//gets and sets
 	public Integer getId() {
 		return id;
 	}

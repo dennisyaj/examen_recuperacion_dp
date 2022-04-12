@@ -1,5 +1,7 @@
 package ec.edu.uce.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +37,11 @@ public class ProductoServiceImpl implements IProductoService {
 	@Override
 	public Producto buscar(Integer id) {
 		return this.iProductoRepo.buscar(id);
+	}
+
+	@Override
+	public List<Producto> buscarTodos() {
+		// TODO Auto-generated method stub
+		return this.iProductoRepo.buscarTodos();
 	}
 }
