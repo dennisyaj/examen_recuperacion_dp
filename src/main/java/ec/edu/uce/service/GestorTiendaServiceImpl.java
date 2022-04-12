@@ -69,8 +69,13 @@ public class GestorTiendaServiceImpl implements IGestorTiendaService {
 	@Transactional
 	public boolean borrarProducto(Integer id) {
 
-		this.iProductoService.borrar(id);
-		return true;
+		if (this.iInventarioService.buscarPorProducto(this.iProductoService.buscar(id)).size() > 0) {
+			return false;
+		} else {
+			this.iProductoService.borrar(id);
+			return true;
+		}
+
 	}
 
 	@Override
@@ -84,11 +89,13 @@ public class GestorTiendaServiceImpl implements IGestorTiendaService {
 
 			Inventario inventario = new Inventario();
 			inventario.setBodega(bodega);
-			inventario.setCodigoBarrasIndividual(codigoBarras + "-" + i);
+			inventario.setCodigoBarrasIndividual(codigoBarras + " - " + i);
 			inventario.setProducto(producto);
 			this.iInventarioService.insertar(inventario);
 		}
-		producto.setInventario(1);
+
+		producto.setStock(cantidad);
+		this.iProductoService.actualizar(producto);
 	}
 
 }

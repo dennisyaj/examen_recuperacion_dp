@@ -15,6 +15,7 @@ import ec.edu.uce.modelo.Bodega;
 import ec.edu.uce.modelo.InventarioTO;
 import ec.edu.uce.modelo.Producto;
 import ec.edu.uce.service.IGestorTiendaService;
+import ec.edu.uce.service.IInventarioService;
 import ec.edu.uce.service.IProductoService;
 
 @Controller
@@ -27,9 +28,14 @@ public class BodegaController {
 	@Autowired
 	private IProductoService iProductoService;
 
+	@Autowired
+	private IInventarioService iInventarioService;
+
 ////////////1////////
 	@GetMapping("insertarBodega")
 	public String insertarBodega(Bodega bodega) {
+
+	
 		return "bodega";
 	}
 

@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import ec.edu.uce.modelo.Inventario;
+import ec.edu.uce.modelo.Producto;
 
 @Transactional
 @Repository
@@ -25,7 +26,7 @@ public class InventarioRepoImpl implements IInventarioRepo {
 	}
 
 	@Override
-	public List<Inventario> buscarPorProducto(String id) {
+	public List<Inventario> buscarPorProducto(Producto id) {
 		TypedQuery<Inventario> myQuery = this.entityManager
 				.createQuery("SELECT a FROM Inventario a WHERE a.producto=:id", Inventario.class);
 		myQuery.setParameter("id", id);
