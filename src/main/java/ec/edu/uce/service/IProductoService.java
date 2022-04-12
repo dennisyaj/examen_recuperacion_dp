@@ -12,6 +12,8 @@ public interface IProductoService {
 	void borrar(Integer id);
 
 	Producto buscar(Integer id);
-	
+
 	List<Producto> buscarTodos();
+
+	Producto buscarCodigoBarras(String numero);
 }

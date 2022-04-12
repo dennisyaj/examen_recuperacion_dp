@@ -36,10 +36,10 @@ public class Producto {
 	@Column(name = "prod_stock")
 	private Integer stock;
 
-	@ManyToOne()
-	@JoinColumn(name = "inve_id")
-	private Inventario inventario;
-	//gets and sets
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+	private List<Inventario> inventario;
+
+	// gets and sets
 	public Integer getId() {
 		return id;
 	}
@@ -80,14 +80,14 @@ public class Producto {
 		this.stock = stock;
 	}
 
-	public Inventario getInventario() {
+	public List<Inventario> getInventario() {
 		return inventario;
 	}
 
-	public void setInventario(Inventario inventario) {
+	public void setInventario(List<Inventario> inventario) {
 		this.inventario = inventario;
 	}
-	
-	
+
+
 
 }

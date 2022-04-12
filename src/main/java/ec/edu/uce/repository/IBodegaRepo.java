@@ -11,4 +11,6 @@ public interface IBodegaRepo {
 	void borrar(Integer id);
 
 	Bodega buscar(Integer id);
+
+	Bodega buscarNumero(String numero);
 }

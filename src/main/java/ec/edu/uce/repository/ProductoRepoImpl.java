@@ -49,4 +49,14 @@ public class ProductoRepoImpl implements IProductoRepo {
 		return myQuery.getResultList();
 	}
 
+	@Override
+	public Producto buscarCodigoBarras(String numero) {
+		TypedQuery<Producto> myQuery = this.entityManager
+				.createQuery("SELECT p FROM Producto p WHERE p.codigoBarras=:numero", Producto.class);
+
+		myQuery.setParameter("numero", numero);
+
+		return myQuery.getSingleResult();
+	}
+
 }

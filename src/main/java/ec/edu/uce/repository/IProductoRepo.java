@@ -15,4 +15,6 @@ public interface IProductoRepo {
 	Producto buscar(Integer id);
 
 	List<Producto> buscarTodos();
+	
+	Producto buscarCodigoBarras(String numero);
 }

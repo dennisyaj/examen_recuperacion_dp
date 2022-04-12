@@ -24,17 +24,8 @@ public class Inventario {
 	@Column(name = "inve_id")
 	private Integer id;
 
-	@Column(name = "inve_numero_bodega")
-	private String numeroBodega;
-
-	@Column(name = "inve_codigo_barras_universal")
-	private String codigoBarrasUniversal;
-
 	@Column(name = "inve_codigo_barras_individual")
 	private String codigoBarrasIndividual;
-
-	@Column(name = "inve_cantidad")
-	private Integer cantidad;
 
 	@Column(name = "inve_nombre_hilo")
 	private String nombreHilo;
@@ -43,10 +34,11 @@ public class Inventario {
 	@JoinColumn(name = "bode_id")
 	private Bodega bodega;
 
-	@OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)
-	private List<Producto> productos;
+	@ManyToOne()
+	@JoinColumn(name = "prod_id")
+	private Producto producto;
 
-	//gets and sets
+	// gets and sets
 	public Integer getId() {
 		return id;
 	}
@@ -55,36 +47,12 @@ public class Inventario {
 		this.id = id;
 	}
 
-	public String getNumeroBodega() {
-		return numeroBodega;
-	}
-
-	public void setNumeroBodega(String numeroBodega) {
-		this.numeroBodega = numeroBodega;
-	}
-
-	public String getCodigoBarrasUniversal() {
-		return codigoBarrasUniversal;
-	}
-
-	public void setCodigoBarrasUniversal(String codigoBarrasUniversal) {
-		this.codigoBarrasUniversal = codigoBarrasUniversal;
-	}
-
 	public String getCodigoBarrasIndividual() {
 		return codigoBarrasIndividual;
 	}
 
 	public void setCodigoBarrasIndividual(String codigoBarrasIndividual) {
 		this.codigoBarrasIndividual = codigoBarrasIndividual;
-	}
-
-	public Integer getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
 	}
 
 	public String getNombreHilo() {
@@ -103,13 +71,12 @@ public class Inventario {
 		this.bodega = bodega;
 	}
 
-	public List<Producto> getProductos() {
-		return productos;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
-	
 }

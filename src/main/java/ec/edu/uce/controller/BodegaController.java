@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ec.edu.uce.modelo.Bodega;
+import ec.edu.uce.modelo.InventarioTO;
 import ec.edu.uce.modelo.Producto;
 import ec.edu.uce.service.IGestorTiendaService;
 import ec.edu.uce.service.IProductoService;
@@ -35,12 +36,13 @@ public class BodegaController {
 	@PostMapping("llenarDatos")
 	public String llenarDatos(Bodega bodega, BindingResult result, Model modelo,
 			RedirectAttributes redirectAttributes) {
-		this.iGestorTiendaService.ingresarBodega(bodega.getNombre(), bodega.getNumero(), bodega.getDireccion(), bodega.getTelefono());
+		this.iGestorTiendaService.ingresarBodega(bodega.getNombre(), bodega.getNumero(), bodega.getDireccion(),
+				bodega.getTelefono());
 		redirectAttributes.addFlashAttribute("mensaje", "bodega Creada");
 		return "redirect:/bodegueros/insertarBodega";
 	}
 
-////////////////////
+////////////////////22
 	@GetMapping("insertarProducto")
 	public String insertarProducto(Producto producto) {
 		return "producto";
@@ -49,7 +51,7 @@ public class BodegaController {
 	@PostMapping("llenarDatosProducto")
 	public String llenarDatosProducto(Producto producto, BindingResult result, Model modelo,
 			RedirectAttributes redirectAttributes) {
-		this.iGestorTiendaService.ingresarProdcuto(producto.getNombre(), producto.getCodigoBarras(),
+		this.iGestorTiendaService.ingresarProducto(producto.getNombre(), producto.getCodigoBarras(),
 				producto.getCategoria());
 		return "redirect:/bodegueros/listaTodosProductos";
 	}
@@ -71,5 +73,20 @@ public class BodegaController {
 		}
 
 		return "redirect:/bodegueros/listaTodosProductos";
+	}
+
+	///////////////////////////////// 1////////
+	@GetMapping("ingresarInventario")
+	public String ingresarInventario(InventarioTO inventarioTO) {
+		return "inventario";
+	}
+
+	@PostMapping("llenarDatosInventario")
+	public String llenarDatosInventario(InventarioTO inventarioTO, BindingResult result, Model modelo,
+			RedirectAttributes redirectAttributes) {
+		this.iGestorTiendaService.inngresarProductoInventario(inventarioTO.getNumeroBodega(),
+				inventarioTO.getCodigoBarrasMaestro(), inventarioTO.getCantidad());
+		redirectAttributes.addFlashAttribute("mensaje", "");
+		return "redirect:/bodegueros/ingresarInventario";
 	}
 }

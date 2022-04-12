@@ -35,6 +35,12 @@ public class BodegaServiceImpl implements IBodegaService {
 	public Bodega buscar(Integer id) {
 		return this.iBodegaRepo.buscar(id);
 	}
+
+	@Override
+	public Bodega buscarNumero(String numero) {
+		
+		return this.iBodegaRepo.buscarNumero(numero);
+	}
 	
 
 }
